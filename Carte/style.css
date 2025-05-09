@@ -1,0 +1,207 @@
+/* style.css */
+
+/* --- Styles Globaux --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Fond légèrement texturé/gris clair */
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 10px;
+    background-color: #4CAF50; /* Vert principal */
+    color: white;
+    margin-top: 0;
+    margin-bottom: 0; /* Enlever la marge pour coller aux filtres */
+    font-size: 1.8em;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* --- Conteneur des Filtres --- */
+.filters-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux filtres de passer à la ligne sur petits écrans */
+    justify-content: center;
+    align-items: center;
+    padding: 18px 15px;
+    background-color: #ffffff; /* Fond blanc pour les filtres */
+    border-bottom: 1px solid #e0e0e0;
+    gap: 15px 25px; /* Espace vertical et horizontal entre les éléments */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.filters-container label {
+    font-weight: 600; /* Un peu plus gras */
+    margin-right: 8px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.filters-container select,
+.filters-container button {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background-color: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.filters-container select:hover,
+.filters-container select:focus,
+.filters-container button:hover,
+.filters-container button:focus {
+    border-color: #4CAF50; /* Met en évidence au survol/focus */
+    outline: none; /* Enlève l'outline par défaut moche */
+}
+
+.filters-container button#reset-filters-button {
+    background-color: #6c757d; /* Gris pour le bouton reset */
+    color: white;
+    border-color: #6c757d;
+}
+
+.filters-container button#reset-filters-button:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+
+/* --- Carte Leaflet --- */
+#map {
+    height: calc(100vh - 160px); /* Hauteur dynamique, ajuste 160px en fonction de la hauteur du h1 et des filtres */
+    min-height: 500px; /* Hauteur minimum pour la carte */
+    width: 100%; /* Prend toute la largeur disponible */
+    /* Pas de marge latérale ici car c'est géré par le conteneur parent si besoin */
+    border-top: 1px solid #e0e0e0;
+}
+
+/* --- Popups Leaflet --- */
+.leaflet-popup-content-wrapper {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+    padding: 5px; /* Léger padding autour du contenu */
+}
+
+.leaflet-popup-content {
+    margin: 0 !important; /* Annuler les marges par défaut de Leaflet pour un contrôle total */
+    padding: 10px 15px; /* Padding interne pour le contenu */
+    font-size: 14px;
+    line-height: 1.65;
+    max-height: 320px; /* Hauteur maximale avant scroll */
+    overflow-y: auto; /* Activer le scroll vertical si nécessaire */
+    color: #444;
+}
+
+/* Style de la scrollbar pour les popups (Webkit/Blink - Chrome, Edge, Safari) */
+.leaflet-popup-content::-webkit-scrollbar {
+    width: 7px;
+}
+.leaflet-popup-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.leaflet-popup-content::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+.leaflet-popup-content::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+}
+
+/* --- Contenu spécifique dans la Popup --- */
+.producer-popup h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: #2E7D32; /* Vert foncé pour les titres de popup */
+    font-size: 1.3em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.producer-popup p {
+    margin-bottom: 8px;
+}
+
+.producer-popup strong {
+    color: #333; /* Labels en gras un peu plus sombres */
+    font-weight: 600;
+}
+
+/* Badge AOP */
+.aop-badge {
+    background-color: #4DD0E1; /* Couleur cyan utilisée pour la Grèce dans data.js */
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 5px; /* Petit espace avant le texte "Présente" */
+    display: inline-block; /* Pour que le padding et le background s'appliquent correctement */
+}
+/* Si une autre couleur est voulue spécifiquement pour le badge AOP, on peut la définir ici */
+/* .aop-badge { background-color: #007bff; } */
+
+
+/* Infos spécifiques Syrie dans la popup */
+.syria-info-section {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd; /* Séparateur pour les infos Syrie */
+}
+
+.immap-summary-title { /* Classe utilisée dans data.js pour le titre du résumé iMMAP */
+    font-weight: bold;
+    color: #D32F2F; /* Rouge pour attirer l'attention sur les infos de crise */
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.syria-info-section ul {
+    list-style-type: disc; /* Puces standard */
+    margin-left: 20px; /* Indentation pour la liste */
+    padding-left: 0;
+    margin-bottom: 10px;
+    font-size: 0.9em; /* Texte légèrement plus petit pour le résumé */
+}
+
+.syria-info-section li {
+    margin-bottom: 5px;
+}
+
+.syria-info-section p em {
+    display: block;
+    text-align: right;
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 8px;
+}
+
+/* --- Responsive (optionnel, pour améliorer l'affichage sur petits écrans) --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .filters-container {
+        flex-direction: column; /* Filtres en colonne sur petits écrans */
+        align-items: stretch; /* Pour que les selects prennent toute la largeur */
+    }
+    .filters-container > div { /* Si vous enveloppez chaque filtre dans un div */
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .filters-container select,
+    .filters-container button {
+        width: 100%; /* Pleine largeur pour les inputs */
+        box-sizing: border-box; /* Inclure padding et border dans la largeur */
+    }
+    #map {
+        height: calc(100vh - 220px); /* Ajuster la hauteur de la carte si les filtres prennent plus de place */
+    }
+}
