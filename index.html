@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Mondiale des Producteurs de Pistaches</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+    <!-- Si vous avez mis le CSS du header de market-analysis.html dans market-style.css,
+         et que vous voulez le même style de header ici, vous pouvez l'inclure.
+         Sinon, vous pouvez copier les styles du header de market-style.css dans style.css -->
+    <link rel="stylesheet" href="market-style.css"> <!-- Optionnel, si vous voulez réutiliser le style du header -->
+</head>
+<body>
+
+    <header> <!-- NOUVEAU HEADER -->
+        <h1>Carte Mondiale des Producteurs de Pistaches</h1>
+        <nav>
+            <a href="index.html" class="active">Carte des Producteurs</a>
+            <a href="market-analysis.html">Analyse du Marché</a>
+        </nav>
+    </header>
+
+    <!-- L'ancien H1 peut être supprimé si vous l'intégrez dans le nouveau header comme ci-dessus -->
+    <!-- <h1>Principaux Producteurs de Pistaches dans le Monde</h1> -->
+
+    <div class="filters-container">
+        <div>
+            <label for="continent-filter">Continent :</label>
+            <select id="continent-filter">
+                <option value="all">Tous les continents</option>
+            </select>
+        </div>
+        <div>
+            <label for="aop-filter">AOP :</label>
+            <select id="aop-filter">
+                <option value="all">Tous (AOP/Non AOP)</option>
+                <option value="yes">Avec AOP</option>
+                <option value="no">Sans AOP</option>
+            </select>
+        </div>
+        <div>
+            <button id="reset-filters-button" title="Réinitialiser les filtres">Réinitialiser</button>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
